@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustVote | Results</title>
+    <link rel="stylesheet" href="Results.css">
+    <link rel="icon" href="logos.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/JustVote (1).png" alt="Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUS.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="#">Service 1</a>
+                    <a href="#">Service 2</a>
+                    <a href="#">Service 3</a>
+                </div>
+            </li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <li class="current-page"><a href="Results.html">Results</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Election Results</h2>
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>Candidate</th>
+                    <th>Symbol</th>
+                    <th>Votes</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <canvas id="results-chart"></canvas>
+        
+        <!-- Button to clear all votes -->
+        <button id="clear-votes-btn" style="margin-top: 20px;">Clear All Votes</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    function updateResults() {
+        var votes = JSON.parse(localStorage.getItem('votes')) || {};
+        var candidates = [
+            { name: "Goli Vignesh", symbol: "✌️" },
+            { name: "N Sai Janila", symbol: "🌟" },
+            { name: "M Prajith Balaji", symbol: "🎉" },
+            { name: "G Sudheer", symbol: "🚀" },
+            { name: "G Madhan", symbol: "🎈" },
+            { name: "G Sai Bhavana", symbol: "🎯" }
+        ];
+
+        var tbody = document.querySelector('#results-table tbody');
+        tbody.innerHTML = ''; // Clear the table body before appending new data
+
+        candidates.forEach(function (candidate) {
+            var votesCount = votes[candidate.name] || 0;
+            var tr = document.createElement('tr');
+            tr.innerHTML = `<td>${candidate.name}</td><td>${candidate.symbol}</td><td>${votesCount}</td>`;
+            tbody.appendChild(tr);
+        });
+
+        // Chart.js
+        var ctx = document.getElementById('results-chart').getContext('2d');
+        var chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: candidates.map(c => c.name),
+                datasets: [{
+                    label: 'Votes',
+                    data: candidates.map(c => votes[c.name] || 0),
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        precision: 0,
+                        stepSize: 1
+                    }
+                }
+            }
+        });
+    }
+
+    updateResults(); // Initial call to display results
+
+    // Button click handler to clear all votes
+    var clearVotesBtn = document.getElementById('clear-votes-btn');
+    clearVotesBtn.addEventListener('click', function () {
+        if (confirm("Are you sure you want to clear all votes?")) {
+            localStorage.removeItem('votes');
+
+            // Reset hasVoted status for all users
+            var users = JSON.parse(localStorage.getItem('users')) || {};
+            for (var user in users) {
+                if (users.hasOwnProperty(user)) {
+                    users[user].hasVoted = false;
+                }
+            }
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert("All votes have been cleared.");
+            // Reload the results to reflect cleared votes
+            updateResults();
+        }
+    });
+});
+
+    </script>
+</body>
+
+</html>

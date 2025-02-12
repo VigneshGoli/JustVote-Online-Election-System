@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustVote | Registration</title>
+    <link rel="stylesheet" href="Boxes.css">
+    <link rel="icon" href="logos.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <form id="registration-form">
+            <h2>Voter Registration</h2>
+            <div class="form-group">
+                <input type="text" id="first-name" required>
+                <label for="first-name">First Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="last-name" required>
+                <label for="last-name">Last Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="voter-id" required>
+                <label for="voter-id">Voter ID</label>
+            </div>
+            <div class="form-group">
+                <input type="date" id="dob" required>
+                <label for="dob">Date of Birth</label>
+            </div>
+            <div class="form-group">
+                <select id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="gender">Gender</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+                <label for="mobile">Mobile Number</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" required>
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script src="registration.js"></script>
+</body>
+</html>

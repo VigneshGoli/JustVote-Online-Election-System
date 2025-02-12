@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustVote | Vote Now</title>
+    <link rel="stylesheet" href="Vote-Now.css">
+    <link rel="icon" href="logos.png" type="image/x-icon">
+    <style>
+        /* Example styles for voted state */
+        .voted {
+            opacity: 0.6; /* Example: lower opacity to indicate voted */
+            pointer-events: none; /* Prevent further clicks */
+        }
+    </style>
+    <script>
+        // Fallback check to ensure CSS loads
+        window.onload = function () {
+            var cssLoaded = document.styleSheets.length > 0;
+            if (!cssLoaded) {
+                console.error("Vote-Now.css failed to load. Check the file path.");
+            }
+        };
+    </script>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html"><img src="images/JustVote (1).png" alt="Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="AboutUS.html">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="#">Service 1</a>
+                    <a href="#">Service 2</a>
+                    <a href="#">Service 3</a>
+                </div>
+            </li>
+            <li><a href="ContactUs.html">Contact Us</a></li>
+            <li class="current-page"><a href="Login.html">Vote Now</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="candidate-box" data-candidate="Goli Vignesh">
+            <img src="images/C1.jpeg" alt="Candidate 1">
+            <h2>Goli Vignesh</h2>
+            <p>Symbol: ✌️</p>
+            <p>Fueled by a commitment to excellence and student welfare, I aspire to lead with integrity and empathy.
+                With a focus on collaboration and innovation, I aim to advocate for initiatives that promote
+                inclusivity, diversity, and academic success. Let's work together to shape a brighter future for our
+                college community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+        <div class="candidate-box" data-candidate="N Sai Janila">
+            <img src="images/C2.jpeg" alt="Candidate 2">
+            <h2>N Sai Janila</h2>
+            <p>Symbol: 🌟</p>
+            <p>Guided by a dedication to excellence and student well-being, I strive to lead with integrity and
+                compassion. Through collaboration and innovative thinking, I champion initiatives that promote
+                inclusivity, diversity, and academic achievement. Together, let's forge a brighter path for our college
+                community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+        <div class="candidate-box" data-candidate="M Prajith Balaji">
+            <img src="images/C3.jpg" alt="Candidate 3">
+            <h2>M Prajith Balaji</h2>
+            <p>Symbol: 🎉</p>
+            <p>Driven by a dedication to excellence and student well-being, I aim to lead with integrity and compassion.
+                Through collaboration and innovative solutions, I champion initiatives that promote inclusivity,
+                diversity, and academic success. Let's unite to shape a brighter future for our college community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+        <div class="candidate-box" data-candidate="G Sudheer">
+            <img src="images/C4.jpeg" alt="Candidate 4">
+            <h2>G Sudheer</h2>
+            <p>Symbol: 🚀</p>
+            <p>Passionate about excellence and student welfare, I aim to lead with integrity and empathy. Through
+                collaboration and innovation, I champion initiatives that promote inclusivity, diversity, and academic
+                success. Let's unite to create a brighter future for our college community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+        <div class="candidate-box" data-candidate="G Madhan">
+            <img src="images/C5.jpg" alt="Candidate 5">
+            <h2>G Madhan</h2>
+            <p>Symbol: 🎈</p>
+            <p>Driven by a commitment to excellence and student welfare, I strive to lead with integrity and empathy.
+                Through collaboration and innovation, I advocate for initiatives that foster inclusivity, diversity,
+                and academic success. Together, let's shape a brighter future for our college community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+        <div class="candidate-box" data-candidate="G Sai Bhavana">
+            <img src="images/C6.jpg" alt="Candidate 6">
+            <h2>G Sai Bhavana</h2>
+            <p>Symbol: 🎯</p>
+            <p>Fueled by a commitment to excellence and student welfare, I aspire to lead with integrity and empathy.
+                Through collaboration and innovation, I advocate for initiatives that foster inclusivity, diversity,
+                and academic success. Let's come together to shape a brighter future for our college community.</p>
+            <button class="vote-btn" onclick="vote(this)">Vote</button>
+        </div>
+    </div>
+
+    <script>
+        function vote(btn) {
+            var candidateBox = btn.parentNode;
+            var candidateName = candidateBox.getAttribute('data-candidate');
+            var loggedInUser = sessionStorage.getItem('loggedInUser');
+
+            // Retrieve user data safely
+            var user = JSON.parse(localStorage.getItem('user_' + loggedInUser)) || { hasVoted: false };
+
+            if (user.hasVoted) {
+                alert("You have already voted. You cannot vote again.");
+                return;
+            }
+
+            // Mark as voted and disable all vote buttons
+            candidateBox.classList.add('voted');
+            var allVoteBtns = document.querySelectorAll('.vote-btn');
+            allVoteBtns.forEach(function (button) {
+                button.disabled = true;
+            });
+
+            // Store the vote in localStorage
+            var votes = JSON.parse(localStorage.getItem('votes')) || {};
+            votes[candidateName] = (votes[candidateName] || 0) + 1;
+            localStorage.setItem('votes', JSON.stringify(votes));
+
+            // Update user status
+            user.hasVoted = true;
+            localStorage.setItem('user_' + loggedInUser, JSON.stringify(user));
+
+            // Alert user and redirect
+            alert(`You voted for ${candidateName}. Redirecting to homepage...`);
+            setTimeout(function () {
+                window.location.href = 'index.html';
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

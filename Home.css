@@ -1,0 +1,136 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: #0005;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links li {
+    padding: 0 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    display: block; 
+    padding: 10px;
+    transition: background-color 0.3s ease; 
+}
+
+.current-page{
+    background-color: #0056b3;
+}
+
+.nav-links li a:hover {
+    background-color: #0056b3; 
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content {
+    flex: 1;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+.image {
+    width: 40%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.architecture-image {
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+.image-wrapper {
+    overflow-x: auto;
+    white-space: nowrap;
+    width: 100%;
+    margin: 0;
+    top: 50px;
+    height: calc(100vh); /* Adjust height to exclude navbar height */
+    padding-top: 0; /* Adjust height to exclude navbar */
+}
+
+.image-wrapper img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    object-fit: cover;
+    vertical-align: top;
+     /* Align images to the top of the container */
+}
+.navbar {
+    position: fixed; /* Set navbar position to fixed */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1; /* Ensure navbar appears above images */
+}
+.container {
+    position: relative;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustVote | Registration</title>
+    <link rel="stylesheet" href="registration.css">
+    <link rel="icon" href="logos.png" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <form id="registration-form">
+            <h2>Voter Registration</h2>
+            <div class="form-group">
+                <input type="text" id="first-name" required>
+                <label for="first-name">First Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="last-name" required>
+                <label for="last-name">Last Name</label>
+            </div>
+            <div class="form-group">
+                <input type="text" id="voter-id" required>
+                <label for="voter-id">Voter ID</label>
+            </div>
+            <div class="form-group">
+                <input type="date" id="dob" required>
+                <label for="dob">Date of Birth</label>
+            </div>
+            <div class="form-group">
+                <select id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="gender">Gender</label>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="mobile" pattern="[0-9]{10}" required>
+                <label for="mobile">Mobile Number</label>
+            </div>
+            <div class="form-group">
+                <input type="email" id="email" required>
+                <label for="email">Email</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password" required>
+                <label for="password">Password</label>
+            </div>
+            <div class="form-group">
+                <input type="password" id="confirm-password" required>
+                <label for="confirm-password">Confirm Password</label>
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script src="registration.js"></script>
+</body>
+</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var registrationForm = document.getElementById('registration-form');
+
+    registrationForm.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        // Retrieve form values
+        var firstName = document.getElementById('first-name').value;
+        var lastName = document.getElementById('last-name').value;
+        var voterId = document.getElementById('voter-id').value;
+        var dob = document.getElementById('dob').value;
+        var gender = document.getElementById('gender').value;
+        var mobile = document.getElementById('mobile').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var confirmPassword = document.getElementById('confirm-password').value;
+
+        // Validate if passwords match
+        if (password !== confirmPassword) {
+            alert("Passwords do not match.");
+            return;
+        }
+
+        // Prepare user object
+        var user = {
+            firstName: firstName,
+            lastName: lastName,
+            voterId: voterId,
+            dob: dob,
+            gender: gender,
+            mobile: mobile,
+            email: email,
+            password: password,
+            hasVoted: false
+        };
+
+        // Store user details in localStorage
+        localStorage.setItem('user_' + voterId, JSON.stringify(user));
+
+        // Confirmation message
+        alert("Registration successful! You can now log in.");
+
+        // Redirect to login page
+        window.location.href = 'login.html';
+    });
+});
+</script>

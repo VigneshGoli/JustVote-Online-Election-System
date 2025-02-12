@@ -1,0 +1,154 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links li {
+    padding: 0 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Display as block */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+.current-page{
+    background-color: blue;
+}
+.current-page:hover{
+    background-color: blue ;
+}
+
+.nav-links li a:hover {
+    background-color: blue /* Change background color on hover */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+.section {
+    width: 80%; /* Adjust section width */
+    margin: 20px auto; /* Center the sections */
+    padding: 20px; /* Padding on all sides */
+    border-radius: 10px; /* Rounded corners */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    border: 0.5px solid grey ; /* Smooth transition on hover */
+}
+
+.section:hover {
+    background-color: #e0e0e0; /* Change background color on hover */
+    transform: translateX(-8px); /* Move section up on hover */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p{
+    line-height: 24px;
+}
+
+.content {
+    display: flex;
+    width: 100%;
+}
+
+.image {
+    width: 40%;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Rounded corners for images */
+}
+
+.text {
+    width: 60%;
+    padding-left: 20px; /* Adjust spacing between image and text */
+}
+
+.text h2 {
+    margin-top: 0;
+}
+
+.text-left, .text-right {
+    width: 30%; /* Adjust width of text areas */
+    text-align: center; /* Center align text */
+    padding: 0 20px; /* Add padding */
+}
+
+.image {
+    width: 40%;
+    text-align: center;
+    align-items: center; /* Center align image */
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; 
+    align-items: center;/* Rounded corners for images */
+}
+.center-image{
+    margin-left: 350px;
+    width: 500;
+
+}
+
+.Heading{
+    background-color:  #0056b3;
+    color: white;
+    text-align: center;
+    padding: 5px;
+
+}

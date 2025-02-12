@@ -1,0 +1,121 @@
+/* Custom styles for navigation bar, container, and table */
+nav {
+    background-color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 98.7%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links li {
+    padding: 0 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Display as block */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+.current-page {
+    background-color: #007bff;
+}
+
+.nav-links li a:hover {
+    background-color: #0056b3;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#results-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#results-table th,
+#results-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+#results-table th {
+    background-color: #f2f2f2;
+}
+
+#results-table td:first-child {
+    text-align: left;
+}
+
+/* Custom styles for the Clear All Votes button */
+#clear-votes-btn {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#clear-votes-btn:hover {
+    background-color: #c82333;
+}

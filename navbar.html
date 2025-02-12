@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Bar</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="icon" href="images/logos.png" type="image/x-icon">
+</head>
+<style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    background-color: black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    height: 50px;
+}
+
+.logo img {
+    width: 200px;
+    height: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links li {
+    padding: 0 15px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    display: block; /* Display as block */
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Add transition */
+}
+
+.current-page{
+    background-color: blue;
+}
+
+.nav-links li a:hover {
+    background-color: #555; /* Change background color on hover */
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 100px;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+</style>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="images/JustVote (1).png" alt="Logo">
+        </div>
+        <ul class="nav-links">
+            <div class="current-page"><li><a href="#">Home</a></li></div>
+            
+            <li><a href="#">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Services</a>
+                <div class="dropdown-content">
+                    <a href="#">Service 1</a>
+                    <a href="#">Service 2</a>
+                    <a href="#">Service 3</a>
+                </div>
+            </li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="Login.html">Vote Now</a></li>
+        </ul>
+    </nav>
+</body>
+</html>
